@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>用户列表显示</title>
+</head>
+<body>
+<table style="margin:auto auto">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>邮箱</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${users}">
+        <td th:text="${user.id}">编号</td>
+        <td th:text="${user.username}">用户名</td>
+        <td th:text="${user.password}">密码</td>
+        <td th:text="${user.email}">邮箱</td>
+    </tr>
+    </tbody>
+    <a href="#" th:href="@{/user/show(pageNum=${pageUser.prePage}==0?${pageUser.firstPage}:${pageUser.prePage})}">上一页</a>
+    <a href="#" th:href="@{/user/show(pageNum=${pageUser.nextPage}==0?${pageUser.lastPage}:${pageUser.nextPage})}">下一页</a>
+</table>
+</body>
+</html>
